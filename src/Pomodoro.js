@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import PomodoroTimer from './PomodoroTimer';
+import alertSound from './audio/alert.wav';
+import clickSound from './audio/click.wav';
+import { Howl, Howler } from 'howler';
 import './Pomodoro.css';
 
 class Pomodoro extends Component {
@@ -15,6 +18,12 @@ class Pomodoro extends Component {
             isPaused: true
         }
     };
+    soundPlay = (src) => {
+        const sound = new Howl({
+            src
+        })
+        sound.play();
+    }
     bgColor = () => {
         if (this.state.isBreak) { return 'break' };
         if (this.state.isBigBreak) { return 'big-break' };
@@ -68,12 +77,21 @@ class Pomodoro extends Component {
         this.setState({ interval: null, isPaused: true });
 
         if (this.state.remainingTime === 0) {
+            this.soundPlay(alertSound);
             this.handleTransition()
         }
 
     };
-    handleStartPause = () => (this.state.isPaused ? this.startTimer() : this.stopTimer());
+    handleStartPause = () => {
+        this.soundPlay(clickSound);
+        if (this.state.isPaused) {
+            this.startTimer();
+        } else {
+            this.stopTimer();
+        }
+    };
     handleForward = () => {
+        this.soundPlay(clickSound);
         this.stopTimer();
         this.handleTransition();
     }
@@ -112,6 +130,7 @@ class Pomodoro extends Component {
         }
     }
     render() {
+        Howler.volume(1.0);
         return (
             <div className={`Pomodoro ${this.bgColor()}`}>
                 <div className="Pomodoro-Title">
