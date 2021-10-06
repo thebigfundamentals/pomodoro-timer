@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+.Pomodoro {
+    height: 100vh;
+    background-color: #F07167;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s linear;
+}
+
+.big-break {
+    background-color: #91e892 !important;
+}
+
+.break {
+    background-color: #00AFB9 !important;
+}
+
+@keyframes titleAnim {
+    0% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+        transform-origin: center center;
+    }
+
+    10% {
+        animation-timing-function: ease-in;
+        transform: scale(0.91);
+    }
+
+    17% {
+        animation-timing-function: ease-out;
+        transform: scale(0.98);
+    }
+
+    33% {
+        animation-timing-function: ease-in;
+        transform: scale(0.87);
+    }
+
+    45% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+    }
+}
+
+.Pomodoro-Title {
+    color: whitesmoke;
+    margin-bottom: 3em;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.Pomodoro-Title h1 {
+    animation: titleAnim 2s ease 1s infinite normal both;
+}
+
+.Pomodoro-Counters {
+    font-size: 1.2em;
+    color: whitesmoke;
+}
+
+.Pomodoro-TimerBox {
+    width: 400px;
+    height: 200px;
+    background-color: rgba(224, 224, 224, 0.5);
+    box-shadow: 3px 4px 17px -7px rgba(80, 80, 80, 0.55);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Pomodoro-Credit p {
+    margin-top: 0.1em;
+    font-size: 0.8em;
+    color: lightgrey;
+}
+
+.Pomodoro-Handlers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Pomodoro-Handlers button {
+    color: whitesmoke !important;
+}
+
+.Pomodoro-Handlers i {
+    color: whitesmoke;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.Pomodoro-Handlers i:hover {
+    cursor: pointer;
+    color: rgba(245, 245, 245, 0.493);
+}
