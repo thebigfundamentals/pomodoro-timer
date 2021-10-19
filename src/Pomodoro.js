@@ -18,6 +18,13 @@ class Pomodoro extends Component {
             isPaused: true
         }
     };
+    componentDidUpdate(){
+        if (this.state.isPaused){
+            document.title = 'Pomodoro Timer'
+        } else {
+            document.title = `${this.timerDisplay()} remaining`
+        }
+    }
     soundPlay = (src) => {
         const sound = new Howl({
             src
